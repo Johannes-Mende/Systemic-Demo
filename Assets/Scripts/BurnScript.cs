@@ -13,12 +13,12 @@ public class BurnScript : MonoBehaviour
 
     void OnEnable() 
     {
-        EventManager.OnHit += Burn;    
+        //EventManager.OnHit += Burn;    
     }
 
     void OnDisable() 
     {
-        EventManager.OnHit -= Burn;    
+        //EventManager.OnHit -= Burn;    
     }
 
     void Burn()
@@ -30,7 +30,7 @@ public class BurnScript : MonoBehaviour
     {
         if (other.CompareTag("Fire"))
         {
-            Material = myMaterial;
+            
         }
     }
 

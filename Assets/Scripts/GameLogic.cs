@@ -2,22 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager : MonoBehaviour
+public class GameLogic : MonoBehaviour
 {
-    public delegate void LightAction();
-    public static event LightAction OnHit;
-
-
+    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-
+    // Update is called once per frame
     void Update()
     {
         
     }
-
-
 }
