@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BurnScript : MonoBehaviour
 {
@@ -9,11 +10,14 @@ public class BurnScript : MonoBehaviour
     
     private void Start() {
         OriginalMaterial = GetComponent<MeshRenderer>().sharedMaterial;
+        PlayerController playerController = GameManager.access.PC.GetComponent<PlayerController>();
+        playerController.OnBurn += PlayerController_OnBurn;
+
     }
 
     void OnEnable() 
     {
-        //EventManager.OnHit += Burn;    
+        //EventManager.OnHit += Burn; 
     }
 
     void OnDisable() 
@@ -23,7 +27,7 @@ public class BurnScript : MonoBehaviour
 
     void Burn()
     {
-
+        
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -32,6 +36,12 @@ public class BurnScript : MonoBehaviour
         {
             
         }
+    }
+
+    private void PlayerController_OnBurn(object sender, EventArgs e)
+    {
+        Debug.Log("Space!");
+        
     }
 
 }
