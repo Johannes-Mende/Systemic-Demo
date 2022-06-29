@@ -113,6 +113,7 @@ public class PlayerController : MonoBehaviour
 
                         //Event trigger
                         OnBurn?.Invoke(this, EventArgs.Empty);
+                        selectionRenderer.material = burnMaterial;
                     }
                 }
                 _selection = selection;
