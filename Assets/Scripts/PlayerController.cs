@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
                 var selectionRenderer = selection.GetComponent<Renderer>();
                 if (selectionRenderer != null)
                 {
-                    selectionRenderer.material = highlightMaterial;
+                    //selectionRenderer.material = highlightMaterial;
                     if (Input.GetKey(KeyCode.Space))
                     {
                         Debug.DrawLine(ray.origin, hit.point);
@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
                         selectionRenderer.material = burnMaterial;
                     }
                 }
-                _selection = selection;
+                //_selection = selection;
             }
         }
     }
