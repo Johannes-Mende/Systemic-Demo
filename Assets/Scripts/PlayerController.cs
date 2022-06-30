@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,6 +25,17 @@ public class PlayerController : MonoBehaviour
     Vector2 currentMouseDelta = Vector2.zero;
     Vector2 currentMouseDeltaVelocity = Vector2.zero;
 
+    public LayerMask layermask;
+    public Vector3 hitPoint;
+    public event EventHandler OnBurn;
+
+    [SerializeField] private string interactableTag = "Interactable";
+    [SerializeField] private Material highlightMaterial;
+    [SerializeField] private Material burnMaterial; 
+    [SerializeField] private Material defaultMaterial; 
+
+    private Transform _selection;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -39,6 +51,7 @@ public class PlayerController : MonoBehaviour
     {
         UpdateMouseLook();
         UpdateMovement();
+        OnMouseclick();
     }
 
     void UpdateMouseLook()
@@ -72,5 +85,47 @@ public class PlayerController : MonoBehaviour
         Vector3 velocity = (transform.forward * currentDir.y + transform.right * currentDir.x) * walkSpeed + Vector3.up * velocityY;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    void OnMouseclick()
+    {
+        if (_selection != null)
+        {
+            var selectionRenderer = _selection.GetComponent<Renderer>();
+            selectionRenderer.material = defaultMaterial;
+            _selection = null;
+        }
+
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            var selection = hit.transform;
+            if (selection.CompareTag(interactableTag))
+            {
+                var selectionRenderer = selection.GetComponent<Renderer>();
+                if (selectionRenderer != null)
+                {
+                    //selectionRenderer.material = highlightMaterial;
+                    if (Input.GetKey(KeyCode.Space))
+                    {
+                        Debug.DrawLine(ray.origin, hit.point);
+
+                        //Event trigger
+                        OnBurn?.Invoke(this, EventArgs.Empty);
+                        selectionRenderer.material = burnMaterial;
+                    }
+                }
+                //_selection = selection;
+            }
+        }
+    }
+       private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Gizmos.DrawRay(ray);
+
+        Gizmos.DrawSphere(hitPoint, .2f);
     }
 }
