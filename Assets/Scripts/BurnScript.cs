@@ -38,10 +38,29 @@ public class BurnScript : MonoBehaviour
         }
     }
 
-    private void PlayerController_OnBurn(object sender, EventArgs e)
+    private void PlayerController_OnBurn(object sender, PlayerController.OnBurnEventArgs e)
     {
-        Debug.Log("Space!");
+        Debug.Log("Space!" + e.selection);
+        var selection = e.selection.GetComponent<Renderer>().material;
+        Debug.Log(selection);
         
+
+
+
+        /*
+        int timetofinish = 10;
+        
+        while(timetofinish > 0)
+        {
+            Debug.Log(timetofinish);
+            timetofinish--;
+            
+        }
+        selection = OriginalMaterial;*/
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
 }

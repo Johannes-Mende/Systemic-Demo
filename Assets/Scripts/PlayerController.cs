@@ -27,12 +27,16 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask layermask;
     public Vector3 hitPoint;
-    public event EventHandler OnBurn;
+
+    public event EventHandler<OnBurnEventArgs> OnBurn;
+    public class OnBurnEventArgs : EventArgs {
+        public Transform selection;
+    }
 
     [SerializeField] private string interactableTag = "Interactable";
-    [SerializeField] private Material highlightMaterial;
-    [SerializeField] private Material burnMaterial; 
-    [SerializeField] private Material defaultMaterial; 
+    [SerializeField] public Material highlightMaterial;
+    [SerializeField] public Material burnMaterial; 
+    [SerializeField] public Material defaultMaterial;
 
     private Transform _selection;
 
@@ -51,6 +55,10 @@ public class PlayerController : MonoBehaviour
     {
         UpdateMouseLook();
         UpdateMovement();
+        
+    }
+    private void FixedUpdate()
+    {
         OnMouseclick();
     }
 
@@ -112,8 +120,14 @@ public class PlayerController : MonoBehaviour
                         Debug.DrawLine(ray.origin, hit.point);
 
                         //Event trigger
-                        OnBurn?.Invoke(this, EventArgs.Empty);
-                        selectionRenderer.material = burnMaterial;
+                        OnBurn?.Invoke(this, new OnBurnEventArgs{ selection = selection});
+                        int timetofinish = 10;
+                        while(timetofinish > 0) 
+                        {
+                            selectionRenderer.material = burnMaterial;
+                            timetofinish--;
+                        }
+                        
                     }
                 }
                 //_selection = selection;
