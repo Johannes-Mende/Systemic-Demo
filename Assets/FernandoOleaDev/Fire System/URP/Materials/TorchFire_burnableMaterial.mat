@@ -75,6 +75,6 @@ Material:
     - _BurnedEmissiveColor: {r: 2, g: 0.9960784, b: 0, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Hot: {r: 1, g: 0.57988256, b: 0, a: 0}
-    - _IgnitePosition: {r: -5.815106, g: 1.0065595, b: 19.49443, a: 0}
+    - _IgnitePosition: {r: 0.37552124, g: 1.8543931, b: 0.7560955, a: 0}
     - _Warm: {r: 0, g: 0.66610146, b: 1, a: 0}
   m_BuildTextureStacks: []

@@ -39,7 +39,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public Material defaultMaterial;
 
     private Transform _selection;
+    
+    public Transform bulletSpawnPoint;
+    public GameObject bulletPrefab;
+    public float bulletSpeed = 10;
+    public float fireRate = 15f;
 
+    private float nextTimeToFire = 0.2f;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -55,11 +61,17 @@ public class PlayerController : MonoBehaviour
     {
         UpdateMouseLook();
         UpdateMovement();
-        
+        /*if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire)
+        {
+            nextTimeToFire = Time.time + 1f/fireRate;
+            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;
+        }*/
     }
     private void FixedUpdate()
     {
         OnMouseclick();
+        
     }
 
     void UpdateMouseLook()
@@ -97,7 +109,7 @@ public class PlayerController : MonoBehaviour
 
     void OnMouseclick()
     {
-        if (_selection != null)
+       /* if (_selection != null)
         {
             var selectionRenderer = _selection.GetComponent<Renderer>();
             selectionRenderer.material = defaultMaterial;
@@ -132,7 +144,7 @@ public class PlayerController : MonoBehaviour
                 }
                 //_selection = selection;
             }
-        }
+        }*/
     }
        private void OnDrawGizmos()
     {
