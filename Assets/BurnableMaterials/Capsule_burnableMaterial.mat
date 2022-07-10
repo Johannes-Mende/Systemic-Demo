@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Box2_burnableMaterial
-  m_Shader: {fileID: 4800000, guid: 44badd04985cd4442ab4fea1ef839f80, type: 3}
+  m_Name: Capsule_burnableMaterial
+  m_Shader: {fileID: 4800000, guid: e23d01f00fbee3d498d6cb2ddc8462b0, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -50,6 +50,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AlphaCutoff: 0.5
     - _BorderOffset: 0.066
     - _Burn: 0
     - _BurnComplement: 0.5
@@ -64,13 +65,15 @@ Material:
     - _Opacity: 1
     - _Radious: 0.1828547
     - _ScrollSpeed: 0.5
+    - _Smoothness: 0
     - _WiggleAmount: 0.05
     - __dirty: 1
     m_Colors:
     - _AlbedoColor: {r: 1, g: 1, b: 1, a: 1}
     - _BorderColor: {r: 0, g: 0.2140574, b: 1, a: 0}
     - _BurnedEmissiveColor: {r: 2, g: 0.9960784, b: 0, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Hot: {r: 0.98873585, g: 1, b: 0, a: 0}
-    - _IgnitePosition: {r: -1.9750001, g: 0.557, b: 2.042, a: 0}
+    - _IgnitePosition: {r: 16.08, g: 0.983, b: 12.72, a: 0}
     - _Warm: {r: 1, g: 0.38475236, b: 0, a: 0}
   m_BuildTextureStacks: []

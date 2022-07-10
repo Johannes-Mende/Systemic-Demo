@@ -8,9 +8,19 @@ public class SheepAIController : MonoBehaviour
 {
     public NavMeshAgent agent;
 
+    private NavMeshHit navHit;
+    //private Transform myTransform;
+    public Transform fleeTarget;
+    private Vector3 runPosition;
+    private Vector3 directiontofleetarget;
+    public float fleeRange = 25;
+    private float checkRate;
+    private float nextCheck;
+    private Vector3 finalPosition;
+
     [Range(0, 100)] public float speed;
     [Range(0, 500)] public float walkRadius;
-    
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -30,7 +40,7 @@ public class SheepAIController : MonoBehaviour
     }
     public Vector3 RandomNavMeshLoacation()
     {
-        Vector3 finalPosition = Vector3.zero;
+
         Vector3 randomPosition = Random.insideUnitSphere * walkRadius;
         randomPosition += transform.position;
         if (NavMesh.SamplePosition(randomPosition, out NavMeshHit hit, walkRadius, 1))
@@ -39,4 +49,25 @@ public class SheepAIController : MonoBehaviour
         }
         return finalPosition;
     }
+
+    /*public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("detractor"))
+        {
+
+            fleeTarget = other.gameObject.transform;
+
+
+            directiontofleetarget = transform.position - fleeTarget.position;
+            Vector3 checkPos = transform.position + directiontofleetarget;
+
+            if (NavMesh.SamplePosition(checkPos, out NavMeshHit navHit, 1.0f, NavMesh.AllAreas))
+            {
+                finalPosition = navHit.position;
+              
+            }
+
+        }
+    }*/
 }
+
