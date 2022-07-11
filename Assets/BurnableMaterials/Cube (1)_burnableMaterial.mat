@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Cube (3)_burnableMaterial
+  m_Name: Cube (1)_burnableMaterial
   m_Shader: {fileID: 4800000, guid: e23d01f00fbee3d498d6cb2ddc8462b0, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -74,6 +74,6 @@ Material:
     - _BurnedEmissiveColor: {r: 2, g: 0.9960784, b: 0, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Hot: {r: 0.98873585, g: 1, b: 0, a: 0}
-    - _IgnitePosition: {r: -2.74, g: 0.82903486, b: 9.67, a: 0}
+    - _IgnitePosition: {r: -5.684, g: 2.13, b: -69, a: 0}
     - _Warm: {r: 1, g: 0.38475236, b: 0, a: 0}
   m_BuildTextureStacks: []
