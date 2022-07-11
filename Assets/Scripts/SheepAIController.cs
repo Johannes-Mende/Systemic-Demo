@@ -64,6 +64,7 @@ public class SheepAIController : MonoBehaviour
             
            fleeTarget = other.gameObject.transform;
            DetectNewObstacle(position);
+           //Debug.Log("Triggerenter Detrector");
 /*
             directiontofleetarget = transform.position - fleeTarget.position;
             Vector3 checkPos = transform.position + directiontofleetarget;
@@ -81,6 +82,7 @@ public class SheepAIController : MonoBehaviour
         if (other.CompareTag("detractor") && SheepisBurning == false)
         {
            ResetAgent();
+            //Debug.Log("triggerexit Agent reset");
         }
     }
 
@@ -89,6 +91,7 @@ public class SheepAIController : MonoBehaviour
         agent.speed = 3;
         agent.angularSpeed = 120;
         agent.ResetPath();
+        //Debug.Log("resetAgent funktion");
     }
      
     public void DetectNewObstacle(Vector3 position)
@@ -106,18 +109,45 @@ public class SheepAIController : MonoBehaviour
                 agent.SetDestination(path.corners[path.corners.Length - 1]);
                 agent.speed = 10;
                 agent.angularSpeed = 200;
+                //Debug.Log("newgoal" + newGoal);
+                //Debug.Log("fleedirection" + fleeDirection);
+
             }
         }
+    }
+
+    public void Sheepburning(Vector3 position)
+    {
+        
+        
+            Vector3 fleeDirection = (this.transform.position - position).normalized;
+            Vector3 newGoal = this.transform.position + fleeDirection * fleeRadius;
+
+            NavMeshPath path = new NavMeshPath();
+            agent.CalculatePath(newGoal, path);
+
+            if (path.status != NavMeshPathStatus.PathInvalid)
+            {
+                agent.SetDestination(path.corners[path.corners.Length - 1]);
+                agent.speed = 10;
+                agent.angularSpeed = 200;
+                //Debug.Log("newgoal" + newGoal);
+                //Debug.Log("fleedirection" + fleeDirection);
+
+            }
+        
     }
 
     void IsSheepBurning()
     {
         SheepisBurning = true;
-        DetectNewObstacle(position); 
+        //Debug.Log(SheepisBurning);
+        Sheepburning(position); 
     }
     void IsNotBurning()
     {
         SheepisBurning = false;
+        //Debug.Log(SheepisBurning);
         ResetAgent();
     }
 }
