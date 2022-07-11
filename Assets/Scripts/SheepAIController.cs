@@ -17,6 +17,9 @@ public class SheepAIController : MonoBehaviour
     private float checkRate;
     private float nextCheck;
     private Vector3 finalPosition;
+    float detectionRadius = 20;
+    float fleeRadius = 10;
+    Vector3 position;
 
     [Range(0, 100)] public float speed;
     [Range(0, 500)] public float walkRadius;
@@ -50,14 +53,16 @@ public class SheepAIController : MonoBehaviour
         return finalPosition;
     }
 
-    /*public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
+       
         if (other.CompareTag("detractor"))
         {
-
-            fleeTarget = other.gameObject.transform;
-
-
+            
+            
+           fleeTarget = other.gameObject.transform;
+           DetectNewObstacle(position);
+/*
             directiontofleetarget = transform.position - fleeTarget.position;
             Vector3 checkPos = transform.position + directiontofleetarget;
 
@@ -65,9 +70,42 @@ public class SheepAIController : MonoBehaviour
             {
                 finalPosition = navHit.position;
               
-            }
+            }*/
 
         }
-    }*/
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("detractor"))
+        {
+            ResetAgent();
+        }
+    }
+
+    void ResetAgent()
+    {
+        agent.speed = 3;
+        agent.angularSpeed = 120;
+        agent.ResetPath();
+    }
+     
+    public void DetectNewObstacle(Vector3 position)
+    {
+        if(Vector3.Distance(position, this.transform.position) <= detectionRadius)
+        {
+            Vector3 fleeDirection = (this.transform.position - position).normalized;
+            Vector3 newGoal = this.transform.position + fleeDirection * fleeRadius;
+
+            NavMeshPath path = new NavMeshPath();
+            agent.CalculatePath(newGoal, path);
+
+            if(path.status != NavMeshPathStatus.PathInvalid)
+            {
+                agent.SetDestination(path.corners[path.corners.Length - 1]);
+                agent.speed = 10;
+                agent.angularSpeed = 200;
+            }
+        }
+    }
 }
 
