@@ -117,6 +117,6 @@ Material:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Hot: {r: 0.98873585, g: 1, b: 0, a: 0}
-    - _IgnitePosition: {r: -4.6131682, g: 3.5, b: 7.2032895, a: 0}
+    - _IgnitePosition: {r: -4.6131682, g: 0.000100016594, b: 7.2032895, a: 0}
     - _Warm: {r: 1, g: 0.38475236, b: 0, a: 0}
   m_BuildTextureStacks: []

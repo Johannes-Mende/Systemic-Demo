@@ -11,7 +11,7 @@ public class BurnScript : MonoBehaviour
     private void Start() {
         OriginalMaterial = GetComponent<MeshRenderer>().sharedMaterial;
         PlayerController playerController = GameManager.access.PC.GetComponent<PlayerController>();
-        playerController.OnBurn += PlayerController_OnBurn;
+        //playerController.OnBurn += PlayerController_OnBurn;
 
     }
 

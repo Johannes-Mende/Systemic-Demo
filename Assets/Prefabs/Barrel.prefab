@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 580984716406716467}
   - component: {fileID: 3455639480907238649}
   - component: {fileID: 6474311730146631015}
+  - component: {fileID: 2465928430359041235}
   - component: {fileID: 923124643514493685}
   - component: {fileID: 3815703082317458735}
   - component: {fileID: 3815703082317458734}
@@ -110,9 +111,9 @@ MonoBehaviour:
   infiniteCombustion: 0
   flamePropagationSeconds: 10
   propagationSmooth: 2
-  combustionSeconds: 20
-  combustionsSignsAtCombustionPercent: 0.8
-  coolingSeconds: 10
+  combustionSeconds: 30
+  combustionsSignsAtCombustionPercent: 0.7
+  coolingSeconds: 7
   coolingCurve:
     serializedVersion: 2
     m_Curve:
@@ -137,8 +138,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  secondsToIgnite: 5
-  igniteRadious: 0.6
+  secondsToIgnite: 3
+  igniteRadious: 0.85
   igniteRadiousOffset: {x: 0, y: 0.58, z: 0}
   particlesFirePrefab: {fileID: 4558340311577695490, guid: 5f6a13245c49c8c45a077a6c0cf5c05a,
     type: 3}
@@ -161,6 +162,22 @@ MonoBehaviour:
   maxFlickerMovement: 0.1
   lightColor: {r: 0.6039216, g: 0.34901962, b: 0, a: 0}
   dontAsk: 1
+--- !u!208 &2465928430359041235
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815703082317458732}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.29000002, y: 0.286, z: 0.349}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0.349}
+  m_TimeToStationary: 0.5
 --- !u!64 &923124643514493685
 MeshCollider:
   m_ObjectHideFlags: 0

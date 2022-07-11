@@ -28,12 +28,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask layermask;
     public Vector3 hitPoint;
 
-    public event EventHandler<OnBurnEventArgs> OnBurn;
+    //public event EventHandler<OnBurnEventArgs> OnBurn;
     public class OnBurnEventArgs : EventArgs {
         public Transform selection;
     }
 
-    [SerializeField] private string interactableTag = "Interactable";
+    //[SerializeField] private string interactableTag = "Interactable";
     [SerializeField] public Material highlightMaterial;
     [SerializeField] public Material burnMaterial; 
     [SerializeField] public Material defaultMaterial;
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     public float bulletSpeed = 10;
     public float fireRate = 15f;
 
-    private float nextTimeToFire = 0.2f;
+    //private float nextTimeToFire = 0.2f;
     void Start()
     {
         controller = GetComponent<CharacterController>();
