@@ -21,6 +21,8 @@ public class SheepAIController : MonoBehaviour
     float fleeRadius = 10;
     Vector3 position;
 
+    bool SheepisBurning = false;
+
     [Range(0, 100)] public float speed;
     [Range(0, 500)] public float walkRadius;
 
@@ -76,9 +78,9 @@ public class SheepAIController : MonoBehaviour
     }
     public void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("detractor"))
+        if (other.CompareTag("detractor") && SheepisBurning == false)
         {
-            ResetAgent();
+           ResetAgent();
         }
     }
 
@@ -106,6 +108,17 @@ public class SheepAIController : MonoBehaviour
                 agent.angularSpeed = 200;
             }
         }
+    }
+
+    void IsSheepBurning()
+    {
+        SheepisBurning = true;
+        DetectNewObstacle(position); 
+    }
+    void IsNotBurning()
+    {
+        SheepisBurning = false;
+        ResetAgent();
     }
 }
 
