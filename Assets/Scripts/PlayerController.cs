@@ -25,25 +25,25 @@ public class PlayerController : MonoBehaviour
     Vector2 currentMouseDelta = Vector2.zero;
     Vector2 currentMouseDeltaVelocity = Vector2.zero;
 
-    public LayerMask layermask;
-    public Vector3 hitPoint;
+    /*public LayerMask layermask;
+    public Vector3 hitPoint;*/
 
     //public event EventHandler<OnBurnEventArgs> OnBurn;
-    public class OnBurnEventArgs : EventArgs {
+    /*public class OnBurnEventArgs : EventArgs {
         public Transform selection;
-    }
+    }*/
 
     //[SerializeField] private string interactableTag = "Interactable";
-    [SerializeField] public Material highlightMaterial;
+    /*[SerializeField] public Material highlightMaterial;
     [SerializeField] public Material burnMaterial; 
-    [SerializeField] public Material defaultMaterial;
+    [SerializeField] public Material defaultMaterial;*/
 
-    private Transform _selection;
+    //private Transform _selection;
     
-    public Transform bulletSpawnPoint;
+    /*public Transform bulletSpawnPoint;
     public GameObject bulletPrefab;
     public float bulletSpeed = 10;
-    public float fireRate = 15f;
+    public float fireRate = 15f;*/
 
     //private float nextTimeToFire = 0.2f;
     void Start()
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        OnMouseclick();
+        //OnMouseclick();
         
     }
 
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
-    void OnMouseclick()
+    /*void OnMouseclick()
     {
        /* if (_selection != null)
         {
@@ -144,14 +144,14 @@ public class PlayerController : MonoBehaviour
                 }
                 //_selection = selection;
             }
-        }*/
-    }
-       private void OnDrawGizmos()
+        }
+    }*/
+     /*  private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Gizmos.DrawRay(ray);
 
         Gizmos.DrawSphere(hitPoint, .2f);
-    }
+    }*/
 }
